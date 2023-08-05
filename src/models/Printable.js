@@ -8,7 +8,7 @@ export class printable {
   constructor(name, picture, cost) {
     this.id = uuid()
     this.name = name
-    this.picture = '/Previews/' + picture
+    this.picture = picture
     this.cost = cost
   }
 }

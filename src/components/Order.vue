@@ -13,7 +13,7 @@
         {{ order.qty }} <i class="mdi mdi-circle-small text-accent"></i> {{ order.model }}
       </div>
       <div>{{ order.color }}</div>
-      <small class="text-light burn-30"><i class="mdi mdi-information text-hazard me-1"></i>{{ order.customRequest }}</small>
+      <small v-if="order.customRequest" class="text-light burn-30"><i class="mdi mdi-information text-hazard me-1"></i>{{ order.customRequest }}</small>
     </div>
       <div class="col-1 btn-group dropstart d-none d-md-block">
         <button type="button" class="btn dropdown-toggle h-100 w-100" data-bs-toggle="dropdown" aria-expanded="false">

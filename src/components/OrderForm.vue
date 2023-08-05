@@ -5,8 +5,8 @@
           <input type="text" v-model="editable.customer" required name="customer" class="form-control" placeholder="Customer Name">
           <label for="floatingInput">Customer Name</label>
         </div>
-        <div class="col-2" id="preview-cost">
-          ${{ selected?.cost }}
+        <div v-if="selected?.cost" class="col-2" id="preview-cost">
+         standard cost ${{ selected?.cost }}
         </div>
         <div class="col-md-6 mb-1">
           <img v-if="selected?.picture" :src="'Previews/'+ selected?.picture" id="preview-img" class="img-fluid rounded" />

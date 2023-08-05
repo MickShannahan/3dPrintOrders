@@ -1,36 +1,18 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 justify-content-between">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+      <div class="">
+        <i class="mdi mdi-dots-grid text-accent"></i> 3D Print Orders
       </div>
     </router-link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
-        </li>
-      </ul>
-      <!-- LOGIN COMPONENT HERE -->
-      <Login />
-    </div>
+    <section class="d-flex justify-content-end">
+    <button class="rounded-pill btn btn-blue" data-bs-toggle="modal" data-bs-target="#order-form"><i class="mdi mdi-plus"></i>order</button>
+  </section>
   </nav>
 </template>
 
 <script>
-import Login from './Login.vue';
-export default {
-  setup() {
-    return {}
-  },
-  components: { Login }
-}
+
 </script>
 
 <style scoped>

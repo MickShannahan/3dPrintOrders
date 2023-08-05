@@ -9,7 +9,7 @@
          standard cost ${{ selected?.cost }}
         </div>
         <div class="col-md-6 mb-1">
-          <img v-if="selected?.picture" :src="'Previews/'+ selected?.picture" id="preview-img" class="img-fluid rounded" />
+          <img v-if="selected?.picture" :src=" basePath + 'Previews/'+ selected?.picture" id="preview-img" class="img-fluid rounded" />
         </div>
 
 
@@ -55,6 +55,7 @@ import Pop from '../utils/Pop.js';
 import { ordersService } from '../services/ordersService.js';
 import { logger } from '../utils/Logger.js';
 import { Modal } from 'bootstrap';
+import { basePath } from '../env.js';
 const editable = ref({})
 const printables = computed(()=> AppState.printables)
 const colors = computed(()=> AppState.colors)

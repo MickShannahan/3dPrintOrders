@@ -1,5 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
+import { basePath } from './src/env.js'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,7 +9,7 @@ export default defineConfig({
     outDir: 'docs',
     sourcemap: false,
   },
-  base: '/3dPrintOrders/',
+  base: basePath,
   server: {
     port: 8080
   }

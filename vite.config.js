@@ -8,7 +8,7 @@ export default defineConfig({
     outDir: 'docs',
     sourcemap: false,
   },
-  base: '',
+  base: '/3dPrintOrders/',
   server: {
     port: 8080
   }

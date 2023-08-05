@@ -9,7 +9,7 @@
          standard cost ${{ selected?.cost }}
         </div>
         <div class="col-md-6 mb-1">
-          <img v-if="selected?.picture" :src="'Previews/'+ selected?.picture" id="preview-img" class="img-fluid rounded" />
+          <img v-if="selected?.picture" :src="'/Previews/'+ selected?.picture" id="preview-img" class="img-fluid rounded" />
         </div>
 
 

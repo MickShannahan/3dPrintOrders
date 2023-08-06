@@ -23,6 +23,9 @@
           <i class="mdi mdi-menu fs-2"></i>
         </button>
         <ul class="dropdown-menu">
+          <li v-if="!order.paid">
+            <button @click="markPaid(true)" class="btn text-teal dodge-10 w-100" ><i class="mdi mdi-credit-card-check"></i> mark paid</button>
+          </li>
           <li>
             <button @click="updateOrder('printed')" class="btn text-purple w-100" ><i class="mdi mdi-package-variant-closed-check"></i> printed</button>
           </li>
@@ -33,6 +36,9 @@
             <button @click="updateOrder('in-queue')" class="btn text-yellow w-100"><i class="mdi mdi-progress-clock"></i> in-queue</button>
           </li>
           <li><hr class="dropdown-divider"></li>
+          <li v-if="order.paid">
+            <button @click="markPaid(false)" class="btn text-yellow dodge-10 w-100" ><i class="mdi mdi-credit-card-refund"></i>mark un-paid</button>
+          </li>
           <li>
             <button  class="btn text-indigo dodge-20 w-100" data-bs-toggle="modal" data-bs-target="#update-form" @click="setActive"><i class="mdi mdi-tray-arrow-up"></i> update</button>
           </li>
@@ -46,6 +52,9 @@
           <i class="mdi mdi-menu fs-2"></i>
         </button>
         <ul class="dropdown-menu">
+          <li v-if="!order.paid">
+            <button @click="markPaid(true)" class="btn text-teal dodge-10 w-100" ><i class="mdi mdi-credit-card-check"></i> mark paid</button>
+          </li>
           <li>
             <button @click="updateOrder('printed')" class="btn text-purple w-100" ><i class="mdi mdi-package-variant-closed-check"></i> printed</button>
           </li>
@@ -56,6 +65,9 @@
             <button @click="updateOrder('in-queue')" class="btn text-yellow w-100"><i class="mdi mdi-progress-clock"></i> in-queue</button>
           </li>
           <li><hr class="dropdown-divider"></li>
+          <li v-if="order.paid">
+            <button @click="markPaid(false)" class="btn text-yellow dodge-10 w-100" ><i class="mdi mdi-credit-card-refund"></i>mark un-paid</button>
+          </li>
           <li>
             <button  class="btn text-indigo w-100" data-bs-toggle="modal" data-bs-target="#update-form" @click="setActive"><i class="mdi mdi-tray-arrow-up"></i> update</button>
           </li>
@@ -100,6 +112,16 @@ async function deleteOrder(){
   } catch (error) {
     Pop.error(error)
 
+  }
+}
+
+async function markPaid(bool){
+  try {
+    const update = {...props.order}
+    update.paid = bool
+    await ordersService.updateOrder(update)
+  } catch (error) {
+    Pop.error(error, 'MARKING PAID')
   }
 }
 

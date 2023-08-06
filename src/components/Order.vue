@@ -21,19 +21,20 @@
         </button>
         <ul class="dropdown-menu">
           <li>
-            <button @click="updateOrder('printed')" class="btn text-purple w-100" >printed</button>
+            <button @click="updateOrder('printed')" class="btn text-purple w-100" ><i class="mdi mdi-package-variant-closed-check"></i> printed</button>
           </li>
           <li>
-            <button @click="updateOrder('complete')" class="btn text-teal w-100">complete</button>
+            <button @click="updateOrder('complete')" class="btn text-teal w-100"><i class="mdi mdi-check-decagram"></i> complete</button>
           </li>
           <li>
-            <button @click="updateOrder('in-queue')" class="btn text-yellow w-100">in-queue</button>
+            <button @click="updateOrder('in-queue')" class="btn text-yellow w-100"><i class="mdi mdi-progress-clock"></i> in-queue</button>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <button  class="btn text-indigo dodge-20 w-100" data-bs-toggle="modal" data-bs-target="#update-form" @click="setActive"><i class="mdi mdi-tray-arrow-up"></i> update</button>
           </li>
           <li>
-            <button  class="btn text-indigo w-100" data-bs-toggle="modal" data-bs-target="#update-form" @click="setActive">update</button>
-          </li>
-          <li>
-            <button @click="deleteOrder" class="btn hover-text-hazard w-100">delete</button>
+            <button @click="deleteOrder" class="btn text-hazard w-100"><i class="mdi mdi-delete-forever"></i> delete</button>
           </li>
         </ul>
     </div>
@@ -43,16 +44,20 @@
         </button>
         <ul class="dropdown-menu">
           <li>
-            <button @click="updateOrder('printed')" class="btn text-purple w-100" >printed</button>
+            <button @click="updateOrder('printed')" class="btn text-purple w-100" ><i class="mdi mdi-package-variant-closed-check"></i> printed</button>
           </li>
           <li>
-            <button @click="updateOrder('complete')" class="btn text-teal w-100">complete</button>
+            <button @click="updateOrder('complete')" class="btn text-teal w-100"><i class="mdi mdi-check-decagram"></i> complete</button>
           </li>
           <li>
-            <button @click="updateOrder('in-queue')" class="btn text-yellow w-100">in-queue</button>
+            <button @click="updateOrder('in-queue')" class="btn text-yellow w-100"><i class="mdi mdi-progress-clock"></i> in-queue</button>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <button  class="btn text-indigo w-100" data-bs-toggle="modal" data-bs-target="#update-form" @click="setActive"><i class="mdi mdi-tray-arrow-up"></i> update</button>
           </li>
           <li>
-            <button @click="deleteOrder" class="btn hover-text-hazard w-100">delete</button>
+            <button @click="deleteOrder" class="btn text-hazard w-100"><i class="mdi mdi-delete-forever"></i> delete</button>
           </li>
         </ul>
     </div>

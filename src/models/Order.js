@@ -1,6 +1,6 @@
 export class Order {
-  constructor(data, id) {
-    this.id = data.id || data._id || id
+  constructor(data) {
+    this.id = data.id || data._id
     this.customer = data.customer || 'none'
     this.qty = data.qty || 1
     this.model = data.model
@@ -10,5 +10,43 @@ export class Order {
     this.customRequest = data.customRequest || ''
     this.price = data.price
     this.status = data.status || 'in-queue'
+    this.createdAt = new Date(data.createdAt)
+    this.updatedAt = new Date(data.updatedAt)
   }
+
+  get orderedAgo() {
+    return timeAgo(this.createdAt)
+  }
+
+  get updatedAgo() {
+    return timeAgo(this.updatedAt)
+  }
+}
+
+function timeAgo(date) {
+
+  let seconds = Math.floor((new Date() - date) / 1000);
+
+  let interval = seconds / 31536000;
+
+  if (interval > 1) {
+    return Math.floor(interval) + " years";
+  }
+  interval = seconds / 2592000;
+  if (interval > 1) {
+    return Math.floor(interval) + " months ";
+  }
+  interval = seconds / 86400;
+  if (interval > 1) {
+    return Math.floor(interval) + " d";
+  }
+  interval = seconds / 3600;
+  if (interval > 1) {
+    return Math.floor(interval) + " h";
+  }
+  interval = seconds / 60;
+  if (interval > 1) {
+    return Math.floor(interval) + " m";
+  }
+  return Math.floor(seconds) + " s";
 }

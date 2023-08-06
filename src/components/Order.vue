@@ -1,8 +1,8 @@
 <template>
   <section class="row bg-page drop-2 p-1 rounded mb-2 ">
     <div class="col-md-6 text-accent fw-bold">{{ order.customer }}</div>
-    <div class="col-6 col-md-4"><i :class="`mdi mdi-${icons[order.status]}`"></i> {{ order.status }}</div>
-    <div class="col-6 col-md-2 text-end">
+    <div class="col-8 col-md-5"><i :class="`mdi mdi-${icons[order.status]}`"></i> {{ order.status }} <span class="ms-4 me-2 text-light burn-40"><i class="mdi mdi-tag-arrow-down text-emphasis"></i>{{ order.orderedAgo }}</span><span v-if="order.orderedAgo != order.updatedAgo" class="text-light burn-40"><i class="mdi mdi-inbox-arrow-up text-indigo"></i>{{ order.updatedAgo }}</span></div>
+    <div class="col-4 col-md-1 text-end">
       <i class="mdi mdi-currency-usd text-green"></i>
       {{ order.cost }}</div>
     <div class="col-4 col-md-2">

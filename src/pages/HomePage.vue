@@ -1,8 +1,6 @@
 <template>
 <section class="container-fluid">
 
-  <img :src="  '/Previews/Bingus.png'" alt="">
-
   <section class="row justify-content-center">
     <div class="col-12 col-md-10 bg-page drop-1 rounded mb-3 mt-1 py-2">
 

@@ -5,8 +5,9 @@
           <input type="text" v-model="editable.customer" required name="customer" class="form-control" placeholder="Customer Name">
           <label for="floatingInput">Customer Name</label>
         </div>
-        <div v-if="selected?.cost" class="col-md-2" id="preview-cost">
-         standard cost ${{ selected?.cost }}
+        <div  class="col-md-2  mb-2 d-flex px-0" id="preview-cost">
+          <i class="mdi mdi-currency-usd text-green"></i><label for=""></label>
+         <input type="number" class="form-control" v-model="editable.cost" placeholder="0">
         </div>
         <div class="col-md-6 mb-1">
           <img v-if="selected?.picture" :src="basePath+'Previews/'+ selected?.picture" id="preview-img" class="img-fluid rounded" />
@@ -51,7 +52,7 @@
 
 <script setup>
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted, ref } from 'vue';
+import { computed, reactive, onMounted, ref, watch } from 'vue';
 import Pop from '../utils/Pop.js';
 import { ordersService } from '../services/ordersService.js';
 import { logger } from '../utils/Logger.js';
@@ -62,13 +63,17 @@ const printables = computed(()=> AppState.printables)
 const colors = computed(()=> AppState.colors)
 const selected = computed(()=> AppState.printables.find(p => p.name == editable.value.model))
 
+watch(selected, ()=>{
+  editable.value.cost = selected.value?.cost
+})
+
 function resetForm(){
 editable.value = {qty: 1, model: '', color: ''}
 }
 
 async function createOrder(){
   try {
-    let order = {...editable.value, ...selected.value }
+    let order = { ...selected.value,...editable.value }
     delete order.id
     logger.log(order)
     await ordersService.createOrder(order)

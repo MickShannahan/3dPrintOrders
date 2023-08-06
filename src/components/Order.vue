@@ -6,7 +6,7 @@
       <i class="mdi mdi-currency-usd text-green"></i>
       {{ order.cost }}</div>
     <div class="col-4 col-md-2">
-      <img :src="'/Previews/'+order.picture" class="order-picture img-fluid" alt="">
+      <img :src="'Previews/'+order.picture" class="order-picture img-fluid" alt="">
     </div>
     <div class="col-8 col-md-9">
       <div class="border-bottom">

@@ -60,7 +60,11 @@
     </div>
     <Modal id="order-form">
       <template #header>Create Order</template>
-      <template #body><OrderForm/></template>
+      <template #body><OrderForm target="order-form"/></template>
+    </Modal>
+    <Modal id="update-form">
+      <template #header>Edit Order</template>
+      <template #body><OrderForm :order="activeOrder" target="update-form"/></template>
     </Modal>
   </section>
 </section>
@@ -93,7 +97,7 @@ import { basePath } from '../env.js';
     search.value = ''
     filter.value = {'in-queue': true, printed: true}
   }
-
+  const activeOrder = computed(()=> AppState.activeOrder)
   const orders = computed(()=> AppState.orders.filter(order =>{
     let include = false
     for(let key in filter.value){

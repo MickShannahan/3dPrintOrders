@@ -1,10 +1,12 @@
 import { reactive } from 'vue'
 import { printable } from './models/Printable.js'
+import { Order } from './models/Order.js'
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
-
+  /** @type {Order[]} */
   orders: [],
+  activeOrder: null,
 
   printables: [
     new printable('Classic Dragon', 'ClassicDragon.png', 10),

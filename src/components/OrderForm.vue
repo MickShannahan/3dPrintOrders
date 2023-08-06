@@ -39,11 +39,17 @@
           <label for="">Custom Request</label>
           <textarea v-model="editable.customRequest" class="form-control" name="customRequest" placeholder="no legs, colored eyes, smaller etc.">      </textarea>
         </div>
-        <div class="col-6 col-md-4 offset-md-4 mb-2">
+        <div v-if="!order" class="col-6 col-md-4 offset-md-4 mb-2">
           <button type="button" class="btn text-secondary w-100" @click="resetForm">clear form</button>
         </div>
-        <div class="col-6 col-md-4  mb-2">
-          <button type="submit" class="btn btn-accent w-100">create</button>
+        <div v-else class="col-6 col-md-4 offset-md-4 mb-2">
+          <button type="button" class="btn text-secondary w-100" data-bs-dismiss="modal">cancel</button>
+        </div>
+        <div v-if="!order" class="col-6 col-md-4  mb-2">
+          <button type="submit" class="btn btn-accent w-100"><i class="mdi mdi-check"></i>create</button>
+        </div>
+        <div v-else class="col-6 col-md-4  mb-2">
+          <button type="button" class="btn btn-indigo w-100" @click="updateOrder"><i class="mdi mdi-tray-arrow-up" ></i>update</button>
         </div>
 
       </form>
@@ -52,12 +58,16 @@
 
 <script setup>
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted, ref, watch } from 'vue';
+import { computed, reactive, onMounted, ref, watch, watchEffect } from 'vue';
 import Pop from '../utils/Pop.js';
 import { ordersService } from '../services/ordersService.js';
 import { logger } from '../utils/Logger.js';
 import { Modal } from 'bootstrap';
 import { basePath } from '../env.js';
+import { Order } from '../models/Order.js';
+
+const props = defineProps({order: {type: Order}, target: String})
+
 const editable = ref({})
 const printables = computed(()=> AppState.printables)
 const colors = computed(()=> AppState.colors)
@@ -65,6 +75,14 @@ const selected = computed(()=> AppState.printables.find(p => p.name == editable.
 
 watch(selected, ()=>{
   editable.value.cost = selected.value?.cost
+})
+
+watchEffect(()=>{
+  if(props.order){
+    editable.value = {...props.order}
+  } else {
+    resetForm()
+  }
 })
 
 function resetForm(){
@@ -75,19 +93,28 @@ async function createOrder(){
   try {
     let order = { ...selected.value,...editable.value }
     delete order.id
-    logger.log(order)
     await ordersService.createOrder(order)
     resetForm()
-    Modal.getOrCreateInstance('#order-form').hide()
+    closeModal()
   } catch (error) {
     Pop.error(error, 'CREATE ORDER')
   }
 }
 
-onMounted(()=>{
-  resetForm()
-})
+async function updateOrder(){
+  try {
+    await ordersService.updateOrder(editable.value)
+    closeModal()
+    Pop.toast("Order Updated", 'success', 'center')
+  } catch (error) {
+    Pop.error(error, 'UPDATING ORDER')
+  }
+}
 
+function closeModal(){
+  console.log(props)
+  Modal.getOrCreateInstance('#'+ props.target).hide()
+}
 
 </script>
 

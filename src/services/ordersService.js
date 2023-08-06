@@ -16,11 +16,10 @@ class OrdersService {
   }
 
   async updateOrder(order) {
-    console.log(order)
     const res = await api.put('/' + order.id, { json: JSON.stringify(order) })
     const index = AppState.orders.findIndex(o => o.id == order.id)
     order.updatedAt = res.data.updatedAt
-    AppState.orders.splice(index, 1, order)
+    AppState.orders.splice(index, 1, new Order(order))
   }
 
   async deleteOrder(id) {

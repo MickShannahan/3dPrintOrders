@@ -30,6 +30,9 @@
             <button @click="updateOrder('in-queue')" class="btn text-yellow w-100">in-queue</button>
           </li>
           <li>
+            <button  class="btn text-indigo w-100" data-bs-toggle="modal" data-bs-target="#update-form" @click="setActive">update</button>
+          </li>
+          <li>
             <button @click="deleteOrder" class="btn hover-text-hazard w-100">delete</button>
           </li>
         </ul>
@@ -58,6 +61,7 @@
 
 
 <script setup>
+import { AppState } from '../AppState.js';
 import { basePath } from '../env.js';
 import { Order } from '../models/Order.js';
 import { ordersService } from '../services/ordersService.js';
@@ -89,6 +93,10 @@ async function deleteOrder(){
     Pop.error(error)
 
   }
+}
+
+function setActive(){
+  AppState.activeOrder = props.order
 }
 
 </script>

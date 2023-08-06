@@ -41,6 +41,12 @@
             <label class="form-check-label" for="flexSwitchCheckDefault"><i class="mdi mdi-check-decagram text-teal"></i></label>
           </div>
         </div>
+        <div class="col-3 col-md-1 my-1">
+          <div class="form-check form-switch">
+            <input v-model="paidFilter" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault"><i class="mdi mdi-credit-card-check text-blue dodge-10"></i></label>
+          </div>
+        </div>
         <div class="col-12 col-md-2 my-1 text-end">
           <button  @click="resetFilter" class="btn selectable text-purple">
             <i class="mdi mdi-filter text-purple"></i>clear
@@ -91,14 +97,18 @@ import { basePath } from '../env.js';
   })
 
   const search = ref('')
+  const paidFilter = ref(false)
   const filter = ref({})
 
   function resetFilter(){
     search.value = ''
     filter.value = {'in-queue': true, printed: true}
   }
+
   const activeOrder = computed(()=> AppState.activeOrder)
   const orders = computed(()=> AppState.orders.filter(order =>{
+
+    if(paidFilter.value && !order.paid) return false
     let include = false
     for(let key in filter.value){
         if(order.status == key && filter.value[key]) include = true

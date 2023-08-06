@@ -1,7 +1,7 @@
 <template>
   <section class="row bg-page drop-2 p-1 rounded mb-2 ">
     <div class="col-md-6 text-accent  fw-bold">{{ order.customer }} <i class="mdi mdi-circle-small text-dark dodge-20"></i>
-    <i v-if="order.paid" class="mdi mdi-credit-card-check text-teal dodge-10 "><small class="text-dark dodge-20 ms-2">paid</small></i>
+    <i v-if="order.paid" class="mdi mdi-credit-card-check text-blue dodge-10 "><small class="text-dark dodge-20 ms-2">paid</small></i>
     <i v-else class="mdi mdi-credit-card-remove text-yellow dodge-10"><small class="text-dark dodge-20 ms-2">needs payment</small></i>
     </div>
     <div class="col-8 col-md-5"><i :class="`mdi mdi-${icons[order.status]}`"></i> {{ order.status }} <span v-if="order.status != 'complete'" class="ms-4 me-2 text-light burn-40"><i class="mdi mdi-tag-arrow-down text-emphasis"></i>{{ order.orderedAgo }}</span><span v-if="order.orderedAgo != order.updatedAgo" class="text-light burn-40"><i class="mdi mdi-update text-indigo"></i>{{ order.updatedAgo }}</span></div>
@@ -24,7 +24,7 @@
         </button>
         <ul class="dropdown-menu">
           <li v-if="!order.paid">
-            <button @click="markPaid(true)" class="btn text-teal dodge-10 w-100" ><i class="mdi mdi-credit-card-check"></i> mark paid</button>
+            <button @click="markPaid(true)" class="btn text-blue dodge-10 w-100" ><i class="mdi mdi-credit-card-check"></i> mark paid</button>
           </li>
           <li>
             <button @click="updateOrder('printed')" class="btn text-purple w-100" ><i class="mdi mdi-package-variant-closed-check"></i> printed</button>
@@ -53,7 +53,7 @@
         </button>
         <ul class="dropdown-menu">
           <li v-if="!order.paid">
-            <button @click="markPaid(true)" class="btn text-teal dodge-10 w-100" ><i class="mdi mdi-credit-card-check"></i> mark paid</button>
+            <button @click="markPaid(true)" class="btn text-blue dodge-10 w-100" ><i class="mdi mdi-credit-card-check"></i> mark paid</button>
           </li>
           <li>
             <button @click="updateOrder('printed')" class="btn text-purple w-100" ><i class="mdi mdi-package-variant-closed-check"></i> printed</button>

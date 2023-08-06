@@ -78,7 +78,8 @@ const colors = computed(()=> AppState.colors)
 const selected = computed(()=> AppState.printables.find(p => p.name == editable.value.model))
 
 watch(selected, ()=>{
-  editable.value.cost = selected.value?.cost
+  if(!props.order)
+    editable.value.cost = selected.value?.cost
 })
 
 watchEffect(()=>{

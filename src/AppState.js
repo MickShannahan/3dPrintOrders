@@ -15,8 +15,9 @@ export const AppState = reactive({
     new printable('Ancient Dragon', 'AncientDragon.png', 10),
     new printable('Wishing Dragon', 'WishingDragon.png', 10),
     new printable('Rex Dragon', 'RexDragon.png', 10),
-    new printable('Jigglypuff', 'Jiggly.png', 10),
-    new printable('Bingus', 'Bingus.png', 15)
+    new printable('Oslo', 'Oslo.png', 15),
+    new printable('Bingus', 'Bingus.png', 15),
+    new printable('Jigglypuff', 'Jiggly.png', 10)
   ],
   colors: [
     '✨Galactic Purple',

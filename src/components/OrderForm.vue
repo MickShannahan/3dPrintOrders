@@ -5,7 +5,7 @@
           <input type="text" v-model="editable.customer" required name="customer" class="form-control" placeholder="Customer Name">
           <label for="floatingInput">Customer Name</label>
         </div>
-        <div  class="col-md-2  mb-2 d-flex px-0" id="preview-cost">
+        <div  class="col-md-2  mb-2 d-flex h-25 px-0" id="preview-cost">
           <i class="mdi mdi-currency-usd text-green"></i><label for=""></label>
          <input type="number" class="form-control" v-model="editable.cost" placeholder="0">
         </div>

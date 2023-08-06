@@ -7,7 +7,7 @@ import { api } from "./AxiosService.js"
 class OrdersService {
   async getOrders() {
     const res = await api.get('')
-    AppState.orders = res.data.reverse().map(d => new Order(JSON.parse(d.json), d._id))
+    AppState.orders = res.data.map(d => new Order(JSON.parse(d.json), d._id))
   }
 
   async createOrder(order) {

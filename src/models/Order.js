@@ -2,6 +2,7 @@ export class Order {
   constructor(data) {
     this.id = data.id || data._id
     this.customer = data.customer || 'none'
+    this.paid = data.paid ? data.paid : false
     this.qty = data.qty || 1
     this.model = data.model
     this.color = data.color

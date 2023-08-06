@@ -9,7 +9,11 @@
           <i class="mdi mdi-currency-usd text-green"></i><label for=""></label>
          <input type="number" class="form-control" v-model="editable.cost" placeholder="0">
         </div>
-        <div class="col-md-6 mb-1">
+        <div  class="col-md-2  mb-2 text-center h-25 px-0" >
+          <button type="button" class="btn " :class="{'btn-green text-accent dodge-10': editable.paid, 'btn-dark text-dark dodge-20': !editable.paid}" @click="editable.paid = !editable.paid"><i class="mdi mdi-credit-card"></i> paid</button>
+         <input type="checkbox" class="form-check d-none" v-model="editable.paid" placeholder="0">
+        </div>
+        <div class="col-md-4 mb-1">
           <img v-if="selected?.picture" :src="basePath+'Previews/'+ selected?.picture" id="preview-img" class="img-fluid rounded" />
           <img v-else :src="basePath + 'Previews/placeholder.png'" id="preview-img" class="img-fluid rounded" />
         </div>

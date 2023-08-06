@@ -1,1 +1,0 @@
-.order-row{display:grid;grid-template-columns:28px 200px 15ch 30ch 1fr 15ch 28px}@media (max-width: 768px){.order-row{grid-template-columns:2% 175px 10% 1fr 1fr 10% 4%}}

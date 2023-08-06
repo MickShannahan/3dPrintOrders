@@ -10,6 +10,9 @@ export const AppState = reactive({
     new printable('Classic Dragon', 'ClassicDragon.png', 10),
     new printable('Poison Dragon', 'PoisonDragon.png', 20),
     new printable('Gemstone Dragon', 'GemstoneDragon.png', 10),
+    new printable('Ancient Dragon', 'AncientDragon.png', 10),
+    new printable('Wishing Dragon', 'WishingDragon.png', 10),
+    new printable('Rex Dragon', 'RexDragon.png', 10),
     new printable('Bingus', 'Bingus.png', 15)
   ],
   colors: [

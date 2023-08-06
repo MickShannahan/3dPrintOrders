@@ -17,6 +17,9 @@ export const AppState = reactive({
     new printable('Rex Dragon', 'RexDragon.png', 10),
     new printable('Oslo', 'Oslo.png', 15),
     new printable('Bingus', 'Bingus.png', 15),
+    new printable('Slim Body Vase', 'Body Vase.png', 20),
+    new printable('Natural Body Vase', 'Natural Body Vase.png', 20),
+    new printable('Sitting Vase', 'Sitting Vase.png', 20),
     new printable('Jigglypuff', 'Jiggly.png', 10)
   ],
   colors: [

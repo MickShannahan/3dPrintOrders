@@ -34,7 +34,7 @@
             <select v-model="editable.color" required class="form-select" id="color-list" name="color" >
               <option selected disabled value="">Color</option>
               <!-- Color Options -->
-              <option v-for="c in colors" :key="c" :value="c">{{ c }}</option>
+              <option v-for="c in colors" :key="c" :value="c.name">{{ c.name }}</option>
             </select>
           </div>
         </div>
@@ -43,10 +43,17 @@
           <label for="">Custom Request</label>
           <textarea v-model="editable.customRequest" class="form-control" name="customRequest" placeholder="no legs, colored eyes, smaller etc.">      </textarea>
         </div>
-        <div v-if="!order" class="col-6 col-md-4 offset-md-4 mb-2">
+
+        <div class="col-12 col-md-4 text-dark dodge-40">
+          <div v-if="color && selected">
+            estimated cost <i class="mdi mdi-currency-usd text-green burn-10"></i> {{ estimatedCost }}
+          </div>
+        </div>
+
+        <div v-if="!order" class="col-6 col-md-4 mb-2">
           <button type="button" class="btn text-secondary w-100" @click="resetForm">clear form</button>
         </div>
-        <div v-else class="col-6 col-md-4 offset-md-4 mb-2">
+        <div v-else class="col-6 col-md-4 mb-2">
           <button type="button" class="btn text-secondary w-100" data-bs-dismiss="modal">cancel</button>
         </div>
         <div v-if="!order" class="col-6 col-md-4  mb-2">
@@ -76,6 +83,8 @@ const editable = ref({})
 const printables = computed(()=> AppState.printables)
 const colors = computed(()=> AppState.colors)
 const selected = computed(()=> AppState.printables.find(p => p.name == editable.value.model))
+const color = computed(()=> colors.value.find(c => c.name == editable.value.color))
+const estimatedCost = computed(()=> (color.value?.gPrice * selected.value?.gUsed).toFixed(2))
 
 watch(selected, ()=>{
   if(!props.order)

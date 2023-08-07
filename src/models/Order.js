@@ -11,6 +11,7 @@ export class Order {
     this.customRequest = data.customRequest || ''
     this.price = data.price
     this.status = data.status || 'in-queue'
+    this.kgUsed = data.kgUsed || 1
     this.createdAt = new Date(data.createdAt)
     this.updatedAt = new Date(data.updatedAt)
   }

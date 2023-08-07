@@ -5,10 +5,11 @@ function uuid() {
 }
 
 export class printable {
-  constructor(name, picture, cost) {
+  constructor(name, picture, cost, gUsed) {
     this.id = uuid()
     this.name = name
     this.picture = picture
     this.cost = cost
+    this.gUsed = gUsed || 0
   }
 }

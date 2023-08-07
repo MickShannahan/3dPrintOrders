@@ -36,8 +36,15 @@ export const AppState = reactive({
     new Color({ name: '✨Sakura Pink', kgPrice: 36, manufacturer: 'cookie cad' }),
     new Color({ name: '✨Midnight Blue', kgPrice: 36, manufacturer: 'cookie cad' }),
     new Color({ name: '✨Ice Blue', kgPrice: 36, manufacturer: 'cookie cad' }),
+    new Color({ name: '✨Jupiter Gold', kgPrice: 36, manufacturer: 'polymaker' }),
     new Color({ name: '🌠Silver', kgPrice: 27, manufacturer: 'hatchbox' }),
     new Color({ name: '🌠Gold', kgPrice: 27, manufacturer: 'hatchbox' }),
+    new Color({ name: '🌠Iron', kgPrice: 27, manufacturer: 'hatchbox' }),
+    new Color({ name: '🥚Black', kgPrice: 22, manufacturer: 'polymaker' }),
+    new Color({ name: '🥚white', kgPrice: 22, manufacturer: 'polymaker' }),
+    new Color({ name: '🥚off-white', kgPrice: 22, manufacturer: 'polymaker' }),
+    new Color({ name: '🥚grey', kgPrice: 22, manufacturer: 'polymaker' }),
+    new Color({ name: '🌈macaroon rainbow', kgPrice: 28, manufacturer: 'polymaker' }),
   ]
 
 })

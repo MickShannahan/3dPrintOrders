@@ -4,7 +4,12 @@
     <i v-if="order.paid" class="mdi mdi-credit-card-check text-blue dodge-10 "><small class="text-dark dodge-20 ms-2">paid</small></i>
     <i v-else class="mdi mdi-credit-card-remove text-yellow dodge-10"><small class="text-dark dodge-20 ms-2">needs payment</small></i>
     </div>
-    <div class="col-8 col-md-5"><i :class="`mdi mdi-${icons[order.status]}`"></i> {{ order.status }} <span v-if="order.status != 'complete'" class="ms-4 me-2 text-light burn-40"><i class="mdi mdi-tag-arrow-down text-emphasis"></i>{{ order.orderedAgo }}</span><span v-if="order.orderedAgo != order.updatedAgo" class="text-light burn-40"><i class="mdi mdi-update text-indigo"></i>{{ order.updatedAgo }}</span></div>
+    <div class="col-8 col-md-5">
+      <i :class="`mdi mdi-${icons[order.status]}`"></i> {{ order.status }}
+       <span v-if="order.status == 'complete'" class=" me-2 text-light burn-40"><i class="mdi mdi-circle-small"></i> {{ order.updatedAt.toLocaleDateString() }}</span>
+       <span v-else-if="order.status != 'complete'" class="ms-4 me-2 text-light burn-40"><i class="mdi mdi-tag-arrow-down text-emphasis"></i>{{ order.orderedAgo }}</span>
+       <span v-if="order.orderedAgo != order.updatedAgo && order.status != 'complete'" class="text-light burn-40"><i class="mdi mdi-update text-indigo"></i>{{ order.updatedAgo }}</span>
+    </div>
     <div class="col-4 col-md-1 text-end">
       <i class="mdi mdi-currency-usd text-green"></i>
       {{ order.cost }}</div>
@@ -15,7 +20,7 @@
       <div class="border-bottom">
         {{ order.qty }} <i class="mdi mdi-circle-small text-accent"></i> {{ order.model }}
       </div>
-      <div>{{ order.color }}</div>
+      <div class="text-blue dodge-75">{{ order.color }}</div>
       <small v-if="order.customRequest" class="text-light burn-30"><i class="mdi mdi-information text-hazard me-1"></i>{{ order.customRequest }}</small>
     </div>
       <div class="col-1 btn-group dropstart d-none d-md-block">

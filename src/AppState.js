@@ -29,7 +29,7 @@ export const AppState = reactive({
     new printable('Slim Body Vase', 'Body Vase.png', 20, 118.35),
     new printable('Big Body Vase', 'Natural Body Vase.png', 20, 93.67),
     new printable('Sitting Body Vase', 'Sitting Vase.png', 20, 137.25),
-    new printable('Jigglypuff', 'Jiggly.png', 10, 14)
+    new printable('Jigglypuff', 'Jiggly.png', 5, 14)
   ],
   colors: [
     new Color({ name: '✨Galactic Purple', kgPrice: 36, manufacturer: 'cookie cad' }),

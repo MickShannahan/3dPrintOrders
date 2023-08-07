@@ -59,7 +59,7 @@
 
   </section>
 
-  <section class="row justify-content-center">
+  <section v-if="orders.length && !loading" class="row justify-content-center">
 
     <div v-for="o in orders" :key="o.id" class="col-12 col-md-10">
       <Order :order="o"/>
@@ -73,6 +73,9 @@
       <template #body><OrderForm :order="activeOrder" target="update-form"/></template>
     </Modal>
   </section>
+  <section class="row text-center text-dark dodge-50" v-else>
+    loading orders... <i class="mdi mdi-loading mdi-spin text-accent"></i>
+  </section>
 </section>
 </template>
 
@@ -85,9 +88,12 @@ import { logger } from '../utils/Logger.js';
 import { basePath } from '../env.js';
   async function getOrders(){
     try {
+      loading.value = true
       await ordersService.getOrders()
     } catch (error) {
       Pop.error(error, '[Getting Orders]')
+    } finally{
+      loading.value = false
     }
   }
 
@@ -99,6 +105,7 @@ import { basePath } from '../env.js';
   const search = ref('')
   const paidFilter = ref(false)
   const filter = ref({})
+  const loading = ref(false)
 
   function resetFilter(){
     search.value = ''

@@ -126,8 +126,8 @@ import { basePath } from '../env.js';
     return rgx.test(order.customer) || rgx.test(order.model) || rgx.test(order.color) || rgx.test(order.customRequest) || rgx.test(order.status)
   }))
   const totalCount = computed(()=> AppState.orders.length)
-  const units = computed(()=> orders.value.reduce((acc, cur)=> acc + cur.qty , 0))
-  const money = computed(()=> orders.value.reduce((acc, cur)=> acc + cur.cost , 0))
+  const units = computed(()=> orders.value.reduce((acc, cur)=> acc + parseInt(cur.qty) , 0))
+  const money = computed(()=> orders.value.reduce((acc, cur)=> acc + parseInt(cur.cost) , 0))
 </script>
 
 <style  lang="scss">

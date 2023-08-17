@@ -18,6 +18,7 @@ export const AppState = reactive({
     new printable('Rex Dragon', 'RexDragon.png', 10, 113.96),
     new printable('Oslo', 'Oslo.png', 15, 150),
     new printable('Bingus', 'Bingus.png', 15, 45.37),
+    new printable('Beardie', 'Beardie.png', 15, 115.53),
     new printable('Skull Cup', 'SkullCup.png', 25, 370.87),
     new printable('Geometric Succulent Planter', 'Geometric Succulant Planter.png', 10, 41.26),
     // new printable('Large Spiral Planter', 'Large Spiral Planter.png', 15),

@@ -99,6 +99,10 @@ async function updateOrder(status){
   try {
     let update = {...props.order}
     update.status = status
+    if(update.status == 'complete' && !props.order.paid){
+      let pay = await Pop.confirm('Wait A Second', 'This order has not been paid for yet! How would you like to proceed?', 'Mark as Paid', 'Keep as Unpaid', 'question')
+      if(pay) update.paid = true
+    }
     await ordersService.updateOrder(update)
     Pop.toast('order updated', 'success', 'bottom')
   } catch (error) {

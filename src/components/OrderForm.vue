@@ -84,7 +84,12 @@ const printables = computed(()=> AppState.printables)
 const colors = computed(()=> AppState.colors)
 const selected = computed(()=> AppState.printables.find(p => p.name == editable.value.model))
 const color = computed(()=> colors.value.find(c => c.name == editable.value.color))
-const estimatedCost = computed(()=> (color.value?.gPrice * selected.value?.gUsed).toFixed(2))
+const estimatedCost = computed(()=> {
+  const filament = (color.value?.gPrice * selected.value?.gUsed)
+  const power = (selected.value.printTime * .0002625)
+  const wear = ( selected.value.printTime * .012)
+  return ((filament + power + wear)*1.1).toFixed(2)
+})
 
 watch(selected, ()=>{
   if(!props.order)

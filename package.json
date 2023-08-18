@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vite",
     "build": "vite build",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "sass": "npx sass --watch ./public/scss/main.scss ./public/css/main.css"
   },
   "dependencies": {
     "@bcwdev/auth0provider-client": "0.0.13",

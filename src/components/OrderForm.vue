@@ -92,8 +92,10 @@ const estimatedCost = computed(()=> {
 })
 
 watch(selected, ()=>{
-  if(!props.order)
+  if(!props.order){
     editable.value.cost = selected.value?.cost
+  }
+    editable.value.picture = selected.value.picture
 })
 
 watchEffect(()=>{

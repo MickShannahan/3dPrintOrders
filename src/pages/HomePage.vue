@@ -6,13 +6,13 @@
 
       <section class="row mb-2 ">
         <div class="col-4 pe-0 ps-1">
-          <i class="mdi mdi-file-document text-yellow"></i> Orders <span class="text-yellow"> {{ orders.length }}/{{ totalCount }}</span>
+          <i class="mdi mdi-file-document text-warn"></i> Orders <span class="text-warn"> {{ orders.length }}/{{ totalCount }}</span>
         </div>
         <div class="col-4 text-center px-1">
           <i class="mdi mdi-package-variant-closed text-purple"></i> Units <span class="text-purple"> {{units}}</span>
         </div>
         <div class="col-4 text-end ps-0">
-          <i class="mdi mdi-currency-usd text-teal"></i><span class="text-light">{{ money }}</span>
+          <i class="mdi mdi-currency-usd text-teal"></i><span class="">{{ money }}</span>
         </div>
       </section>
 
@@ -25,25 +25,25 @@
         </div>
         <div class="col-3 col-md-1 my-1">
           <div class="form-check form-switch">
-            <input v-model="filter['in-queue']" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <input v-model="filter['in-queue']" class="form-check-input input-yellow" type="checkbox" role="switch" id="flexSwitchCheckDefault">
             <label class="form-check-label" for="flexSwitchCheckDefault"><i class="mdi mdi-progress-clock text-yellow"></i></label>
           </div>
         </div>
         <div class="col-3 col-md-1 my-1">
           <div class="form-check form-switch">
-            <input v-model="filter.printed" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <input v-model="filter.printed" class="form-check-input input-purple" type="checkbox" role="switch" id="flexSwitchCheckDefault">
             <label class="form-check-label" for="flexSwitchCheckDefault"><i class="mdi mdi-package-variant-closed-check text-purple"></i></label>
           </div>
         </div>
         <div class="col-3 col-md-1 my-1">
           <div class="form-check form-switch">
-            <input v-model="filter.complete" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <input v-model="filter.complete" class="form-check-input input-teal" type="checkbox" role="switch" id="flexSwitchCheckDefault">
             <label class="form-check-label" for="flexSwitchCheckDefault"><i class="mdi mdi-check-decagram text-teal"></i></label>
           </div>
         </div>
         <div class="col-3 col-md-1 my-1">
           <div class="form-check form-switch">
-            <input v-model="paidFilter" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <input v-model="paidFilter" class="form-check-input input-blue" type="checkbox" role="switch" id="flexSwitchCheckDefault">
             <label class="form-check-label" for="flexSwitchCheckDefault"><i class="mdi mdi-credit-card-check text-blue dodge-10"></i></label>
           </div>
         </div>
@@ -73,8 +73,15 @@
       <template #body><OrderForm :order="activeOrder" target="update-form"/></template>
     </Modal>
   </section>
+  <section class="row text-center text-dark dodge-50" v-else-if="!orders.length && !loading">
+    <div class="col-12">
+      No Orders here <i class="mdi mdi-select-search"></i>
+    </div>
+  </section>
   <section class="row text-center text-dark dodge-50" v-else>
-    loading orders... <i class="mdi mdi-loading mdi-spin text-accent"></i>
+    <div class="col-12">
+      loading orders... <i class="mdi mdi-loading mdi-spin text-accent"></i>
+    </div>
   </section>
 </section>
 </template>

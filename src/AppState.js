@@ -18,6 +18,7 @@ export const AppState = reactive({
     new printable('Ancient Dragon', 'AncientDragon.png', 10, 88.11, 7.25),
     new printable('Wishing Dragon', 'WishingDragon.png', 10, 90.06, 6.45),
     new printable('Rex Dragon', 'RexDragon.png', 10, 113.96, 7.5),
+    new printable('War Dragon', 'WarDragon.png', 10, 83.43, 4.45),
     new printable('Oslo', 'Oslo.png', 15, 150, 10.25),
     new printable('Bingus', 'Bingus.png', 10, 45.37, 2.7),
     new printable('Beardie', 'Beardie.png', 15, 93.34, 5.1),
@@ -48,11 +49,12 @@ export const AppState = reactive({
     new Color({ name: '🌠Silver', kgPrice: 27, manufacturer: 'hatchbox' }),
     new Color({ name: '🌠Gold', kgPrice: 27, manufacturer: 'hatchbox' }),
     new Color({ name: '🌠Iron', kgPrice: 27, manufacturer: 'hatchbox' }),
+    new Color({ name: '🌈macaroon rainbow', kgPrice: 28, manufacturer: 'polymaker' }),
     new Color({ name: '🥚Black', kgPrice: 22, manufacturer: 'polymaker' }),
     new Color({ name: '🥚white', kgPrice: 22, manufacturer: 'polymaker' }),
     new Color({ name: '🥚off-white', kgPrice: 22, manufacturer: 'polymaker' }),
     new Color({ name: '🥚grey', kgPrice: 22, manufacturer: 'polymaker' }),
-    new Color({ name: '🌈macaroon rainbow', kgPrice: 28, manufacturer: 'polymaker' }),
+    new Color({ name: '❔Other', kgPrice: 25, manufacturer: 'unknown' }),
   ]
 
 })

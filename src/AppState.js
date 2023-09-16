@@ -10,6 +10,8 @@ export const AppState = reactive({
   orders: [],
   activeOrder: null,
   metadata: loadState('metadata', Object),
+  powerCostPerMin: .0002625,
+  wearCostPerMin: .012,
 
   printables: [
     new printable('Classic Dragon', 'ClassicDragon.png', 10, 73.32, 4.75),

@@ -1,1 +1,0 @@
-import{o,a as r,c as s,P as c,b as n}from"./index-22fe7c19.js";class l{}const _=new l,i={class:"container-fluid"},d=n("section",{class:"row"},null,-1),u=[d],f={__name:"GalleryPage",setup(a){async function t(){try{await _.getGallery()}catch(e){c.error(e)}}return o(()=>{t()}),(e,p)=>(r(),s("div",i,u))}};export{f as default};

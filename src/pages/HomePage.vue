@@ -12,7 +12,15 @@
           <i class="mdi mdi-package-variant-closed text-purple"></i> Units <span class="text-purple"> {{units}}</span>
         </div>
         <div class="col-4 text-end ps-0">
-          <i class="mdi mdi-currency-usd text-teal"></i><span class="">{{ money }}</span>
+          <div title="revenue">
+            <i class="mdi mdi-plus text-blue"></i><small class="text-page dodge-30">{{ revenue }}</small>
+          </div>
+          <div title="estimated production costs">
+            <i class="mdi mdi-minus text-yellow"></i><small class="text-page dodge-30">{{ costs.toFixed(2) }}</small>
+          </div>
+          <div title="profits">
+            <i class="mdi mdi-currency-usd text-teal"></i><span class="fw-bold">{{ (revenue - costs).toFixed(2) }}</span>
+          </div>
         </div>
       </section>
 
@@ -134,7 +142,11 @@ import { basePath } from '../env.js';
   }))
   const totalCount = computed(()=> AppState.orders.length)
   const units = computed(()=> orders.value.reduce((acc, cur)=> acc + parseInt(cur.qty) , 0))
-  const money = computed(()=> orders.value.reduce((acc, cur)=> acc + parseInt(cur.cost) , 0))
+  const revenue = computed(()=> orders.value.reduce((acc, cur)=> acc + parseInt(cur.cost) , 0))
+  const costs = computed(()=> orders.value.reduce((acc, cur)=> {
+    logger.log(cur)
+    return acc + cur.materialCost + cur.powerCost + cur.wearCost
+  }, 0))
 </script>
 
 <style  lang="scss">

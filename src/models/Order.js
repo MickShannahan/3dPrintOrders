@@ -1,3 +1,5 @@
+import { AppState } from "../AppState.js"
+
 export class Order {
   constructor(data) {
     this.id = data.id || data._id
@@ -16,6 +18,29 @@ export class Order {
     this.updatedAt = new Date(data.updatedAt)
   }
 
+  get printable(){
+    return AppState.printables.find(p => p.name == this.model)
+  }
+
+  get filament(){
+    return AppState.colors.find(c => c.name == this.color)
+  }
+
+  get materialCost(){
+
+    let cost = this.filament.gPrice * this.printable.gUsed
+    return cost
+  }
+
+  get powerCost(){
+    let cost = this.printable.printTime * AppState.powerCostPerMin
+    return cost
+  }
+
+  get wearCost(){
+    let cost = this.printable.printTime * AppState.wearCostPerMin
+    return cost
+  }
   get orderedAgo() {
     return timeAgo(this.createdAt)
   }

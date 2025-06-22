@@ -72,14 +72,6 @@
     <div v-for="o in orders" :key="o.id" class="col-12 col-md-10">
       <Order :order="o"/>
     </div>
-    <Modal id="order-form">
-      <template #header>Create Order</template>
-      <template #body><OrderForm target="order-form"/></template>
-    </Modal>
-    <Modal id="update-form">
-      <template #header>Edit Order</template>
-      <template #body><OrderForm :order="activeOrder" target="update-form"/></template>
-    </Modal>
   </section>
   <section class="row text-center text-dark dodge-50" v-else-if="!orders.length && !loading">
     <div class="col-12">
@@ -92,6 +84,14 @@
     </div>
   </section>
 </section>
+<Modal id="order-form">
+  <template #header>Create Order</template>
+  <template #body><OrderForm target="order-form"/></template>
+</Modal>
+<Modal id="update-form">
+  <template #header>Edit Order</template>
+  <template #body><OrderForm :order="activeOrder" target="update-form"/></template>
+</Modal>
 </template>
 
 <script setup>

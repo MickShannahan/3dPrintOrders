@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js"
+import { logger } from "../utils/Logger.js"
 
 export class Order {
   constructor(data) {
@@ -18,26 +19,25 @@ export class Order {
     this.updatedAt = new Date(data.updatedAt)
   }
 
-  get printable(){
-    return AppState.printables.find(p => p.name == this.model)
+  get printable() {
+    return AppState.printables.find(p => p.name == this.model) || AppState.printables[0]
   }
 
-  get filament(){
-    return AppState.colors.find(c => c.name == this.color)
+  get filament() {
+    return AppState.colors.find(c => c.name == this.color) || AppState.colors[0]
   }
 
-  get materialCost(){
-
+  get materialCost() {
     let cost = this.filament.gPrice * this.printable.gUsed
     return cost
   }
 
-  get powerCost(){
+  get powerCost() {
     let cost = this.printable.printTime * AppState.powerCostPerMin
     return cost
   }
 
-  get wearCost(){
+  get wearCost() {
     let cost = this.printable.printTime * AppState.wearCostPerMin
     return cost
   }
